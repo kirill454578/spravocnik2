@@ -1,5 +1,5 @@
 const { contextBridge } = require("electron");
 
 contextBridge.exposeInMainWorld("api", {
-    message: "Hello from preload"
+    message: "Привет из preload.js!"
 });
