@@ -6,16 +6,11 @@ function createWindow() {
         width: 800,
         height: 600,
         webPreferences: {
-            preload: path.join(__dirname, "preload.js"),
-            contextIsolation: true,
-            nodeIntegration: false
+            preload: path.join(__dirname, "preload.js")
         }
     });
 
     win.loadFile("index.html");
-
-    // Открывать DevTools (по желанию)
-    // win.webContents.openDevTools();
 }
 
 app.whenReady().then(() => {
@@ -26,9 +21,6 @@ app.whenReady().then(() => {
     });
 });
 
-// Полное закрытие на Windows/Linux
 app.on("window-all-closed", () => {
-    if (process.platform !== "darwin") {
-        app.quit();
-    }
+    if (process.platform !== "darwin") app.quit();
 });
